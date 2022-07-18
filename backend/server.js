@@ -4,6 +4,9 @@ import mongoose from 'mongoose'
 import billRouter from './routes/electricbill.js'
 import path,{dirname} from 'path'
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv'
+dotenv.config()
+
 const app = express();
 app.use(express.json())  // to parse body in json format (body parser)
 app.use(express.urlencoded({extended:true}))
