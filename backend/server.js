@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors'
+// import cors from 'cors'
 import mongoose from 'mongoose'
 import billRouter from './routes/electricbill.js'
 import path,{dirname} from 'path'
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json())  // to parse body in json format (body parser)
 app.use(express.urlencoded({extended:true}))
 const PORT= process.env.PORT || 5000
-const uri  = "mongodb+srv://Jaydeep-shelake:Pass%40123@cluster0.dvyoz.mongodb.net/?retryWrites=true&w=majority";
+const uri  = "mongodb+srv://Print-X:Pass%40123@cluster0.w844m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //Pass%40123
 mongoose.connect(uri,
     err => {
