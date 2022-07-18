@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main {
+  width: 60%;
+  background: rgba(233, 232, 232, 0.336);
+  height: calc(100vh - 80px);
+  padding: 30px;
+}
+.right-sidebar {
+  width: 25%;
+}
+.sidebar {
+  width: 15%;
+}
+
+.plate-card {
+  width: 250px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px;
+  cursor: pointer;
+}
+.plate-card.active {
+  border: 2px solid #63b7b7;
+}
+.plate-card img {
+  width: 90%;
+}
+.plate-card p {
+  background: #58d3d342;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: rgb(14, 13, 13);
+  margin: 5px 0px;
+}
+.plates {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+.status {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #27adad;
+  font-weight: 700;
+}
+.status p {
+  width: 80px;
+  text-align: center;
+}
+.users-orders {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  height: 250px;
+  overflow-y: auto;
+  position: relative;
+}
+.user-order-card {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(233, 232, 232, 0.336);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0px;
+  color: #000;
+ 
+}
+.user-order-card.active {
+  background: #97d6d63d;
+  cursor: pointer;
+}
+.main table{
+  width: 100%;
+  margin-top:30px;
+  border-spacing: 0px;
+}
+.main table th ,.main table td{
+  width: 100px;
+  text-align: start;
+  padding: 10px;
+}
+.main table td{
+  text-align: start;
+  padding: 10px;
+}
+table tr:nth-child(even){
+  background: #b9efef;
+}
+.total-area{
+  width: 100%;
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.total-area p{
+  font-weight: 600;
+}
+
+.billid{
+  background: #fff;
+  border:2px solid #27adad;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 30px;
+}
+.billid-options{
+  margin-top: 20px;
+}
+.billid-options button{
+  cursor: pointer;
+}
+.billid-options button:nth-child(2){
+  margin-left: 10px;
+}

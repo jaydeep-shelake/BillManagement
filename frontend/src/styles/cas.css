@@ -1,0 +1,39 @@
+.add-order{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-order form{
+    width: 60%;
+    background: #fff;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    box-shadow: 2px 2px 4px rgba(32, 31, 31, 0.34);
+    border-radius: 6px;
+}
+.add-order form input{
+    width: 90%;
+    background: rgb(236, 236, 236);
+    padding: 15px 10px;
+    border: 6px;
+    margin: 10px 0;
+}
+.add-order form input::placeholder{
+    color: #000;
+    font-size: 14px;
+}
+.add-order button{
+    width: 90%;
+    background: #63b7b7;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    
+}

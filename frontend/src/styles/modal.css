@@ -1,0 +1,61 @@
+.black-screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.37);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 300px;
+}
+.modal-box .detail {
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+  justify-content: center;
+}
+.modal-box .detail span {
+  padding: 2px 8px;
+  background: #63b7b771;
+  color: rgb(77, 75, 75);
+  margin-left: 10px;
+  border-radius: 3px;
+}
+.modal-box button {
+  background: #63b7b7de;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  padding: 6px 15px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.modal-box form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.modal-box form input {
+  width: 100%;
+  background: rgb(241, 239, 239);
+  padding: 8px 15px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 0;
+}

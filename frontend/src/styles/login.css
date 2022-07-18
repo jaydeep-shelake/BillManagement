@@ -1,0 +1,32 @@
+.loginPage{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.loginPage form{
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.345);
+}
+.loginPage form input{
+    width: 90%;
+    background: rgb(236, 236, 236);
+    padding: 15px 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+.loginPage form button{
+    width: 90%;
+    background: #63b7b7;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+}
