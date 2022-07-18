@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json())  // to parse body in json format (body parser)
 app.use(express.urlencoded({extended:true}))
 const PORT= process.env.PORT || 5000
-const uri  = "mongodb://Jaydeep-shelake:Pass%40123@cluster0-shard-00-00.dvyoz.mongodb.net:27017,cluster0-shard-00-01.dvyoz.mongodb.net:27017,cluster0-shard-00-02.dvyoz.mongodb.net:27017/?ssl=true&replicaSet=atlas-wt8c8d-shard-0&authSource=admin&retryWrites=true&w=majority";
+const uri  = "mongodb+srv://Jaydeep-shelake:Pass%40123@cluster0.dvyoz.mongodb.net/?retryWrites=true&w=majority";
 //Pass%40123
 mongoose.connect(uri,
     err => {
