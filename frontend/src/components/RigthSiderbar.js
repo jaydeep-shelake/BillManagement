@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useMemo} from 'react'
 import { PieChart } from 'react-minimal-pie-chart';
 import {GrAddCircle} from 'react-icons/gr'
 import '../styles/rightsidebar.css'
@@ -7,14 +7,19 @@ import { useSelector } from 'react-redux';
 const RigthSiderbar = () => {
   const [showModal,setShowModal]=useState(false)
   const bills = useSelector(state=>state.bills)
-  const total = bills?.reduce((a,b)=>a+parseInt(b.totalAmount),0)
+  const totalAmont = useMemo(()=>bills.reduce((total,item)=>total+parseInt(item.amount),0))
+  const billToBePaid= useMemo(()=>bills.filter(item=>item.paid===false).reduce((total,item)=>total+parseInt(item.amount),0))
+   const waringAmount= 40000
   return (
     <>
     <div className='right-sidebar'>
     <div className="user-info">
-        <p>Total bill: <span>{total}</span></p>
-        
+        <p>Total Bill: <span>{totalAmont}</span></p>
       </div>
+    <div className="user-info">
+        <p>Bill to be Paid: <span>{billToBePaid}</span></p>
+      </div>
+         {billToBePaid>=waringAmount&&<p className="err">Budget has came to end</p>}
       <div className="chart-area">
         <h3>Weekly Analatyics</h3>
       <PieChart

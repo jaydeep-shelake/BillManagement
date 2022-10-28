@@ -1,21 +1,25 @@
 import mongoose from 'mongoose'
 
 const billSchema = new mongoose.Schema({
-    billDate:{
+    description:{
         type:String,
         required:true
     },
-    paidDate:{
+    amount:{
         type:String,
         required:true
     },
-    unitConsumed:{
-        type:Number,
+    date:{
+        type:String,
         required:true,
     },
-    totalAmount:{
-        type:Number,
+    category:{
+        type:String,
         required:true
+    },
+    paid:{
+        type:Boolean,
+        default:false
     }
 
 },{

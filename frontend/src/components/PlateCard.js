@@ -1,15 +1,12 @@
 import React from 'react'
-const PlateCard = ({text,img,i,active,setActiveIndex,setDetails}) => {
-  const handleOnClick=()=>{
-    setDetails({text,img})
-    setActiveIndex(i)
-  }
+const PlateCard = ({img,text,bill}) => {
+ 
 
  
   return (
-    <div   className={`plate-card ${active&&'active'}`} onClick={handleOnClick}>
+    <div   className={`plate-card`} >
         <img src={img} alt="add" />
-        <button>{text}</button>
+        <button>{text}{bill}</button>
     </div>
   )
 }

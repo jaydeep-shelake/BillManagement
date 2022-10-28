@@ -1,52 +1,37 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllBils } from '../actions'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 const PastOrders = () => {
   const bills = useSelector(state=>state.bills)
-  const total = bills?.reduce((a,b)=>a+b.totalAmount,0)
-  const [count,setCount]=useState(2)
-  const dispatch= useDispatch()
-  const next=()=>{
-   setCount(count+2)
-
-    
-  }
+  const total = bills?.reduce((a,b)=>a+parseInt(b.amount),0)
+ 
   
-
-const prev=()=>{
-  if(count>2){
-    setCount(count-2)
-
-  }
-}
-
-useEffect(()=>{
-  dispatch(getAllBils(count))
-},[count])
   return (
     <div className='main'>
       <h2>Bill history</h2>
       <div className="all-orders">
       <table>
   <tr>
+    <th>Id</th>
     <th>Name</th>
-    <th>Bill Date</th>
-    <th>Paid Date</th>
-    <th>TUnit</th>
     <th>Amount</th>
+    <th>date</th>
+    <th>Status</th>
+    <th>Action</th>
+    
   </tr>
   {
   bills.map((order)=>(
-<tr key={order?._id}>
-    <td>{order?._id}</td>
-    <td>{order?.billDate}</td>
-    <td>{order?.paidDate}</td>
-      <td>{order?.unitConsumed}</td>
+<tr key={order?._id} className={`row ${!order?.paid&&"active"}`}>
 
-    <td>{order?.totalAmount}</td>
+    <td>{order?._id}</td>
+    <td>{order?.description}</td>
+    <td>{order?.amount}</td>
+    <td>{order?.date}</td>
+      <td>{order?.paid?"Paid":"Not Paid"}</td>
+       <td><Link to={`/allBills/${order._id}`}><button>View Bill</button></Link></td>
   </tr>
   ))
   }
@@ -55,8 +40,7 @@ useEffect(()=>{
 <div className="total-area">
   <p>Total:{total} <span>Rs. </span></p>
 </div>
-<button onClick={prev}>Prev</button>
-<button onClick={next} style={{marginLeft:'10px'}}>Next</button>
+
       </div>
     </div>
   )

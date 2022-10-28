@@ -1,13 +1,12 @@
 import apis from "../apis"
 import {ADD_BILL, DELTE_BILL, EDIT_BILL, ERROR, GET_BILL, GET_BILLS,MSG} from './types'
-import {history} from "../history"
 export const notification=(msg)=>{
     return{type:MSG,payload:msg}
   }
-export const getAllBils=(count)=>async dispatch=>{
-    console.log(count)
+export const getAllBils=()=>async dispatch=>{
+   
     try {
-     const {data}=await apis.get(`/?limit=${count}`)
+     const {data}=await apis.get(`/`)
      dispatch({type:GET_BILLS,payload:data})
     
 
@@ -22,29 +21,41 @@ export const getBill=(id)=>async dispatch=>{
  dispatch({type:GET_BILL,payload:data})
 }
 
-export const AddBill=(details)=> async dispatch=>{
+export const AddBill=(details)=> async (dispatch,getState)=>{
+    const state=getState()
     try {
-        const {data}=apis.post('/',details)
-         console.log(data)
-        dispatch({type:ADD_BILL,payload:details})
-        dispatch(notification({msg:"Bill Added Succesfully",err:true}))
-        setTimeout(()=>{
-           dispatch(notification({msg:"",err:false}))
-         },2000)
+        if(state.bills.filter(item=>item.paid===false).reduce((total,item)=>total+parseInt(item.amount),0)>=50000){
+            dispatch(notification({msg:"Total budget exeeded",err:true}))
+           setTimeout(()=>{
+              dispatch(notification({msg:"",err:false}))
+            },4000)
+        }
+        else{
+            const {data}=await apis.post('/',details)
+            console.log(data)
+           dispatch({type:ADD_BILL,payload:data})
+           dispatch(notification({msg:"Bill Added Succesfully",err:true}))
+           setTimeout(()=>{
+              dispatch(notification({msg:"",err:false}))
+            },2000)
+        }
+        
+
     } catch (error) {
         dispatch({type:ERROR,payload:error.response&&error.response.data.message?error.response.data.message:error.message})
         
     }
 }
 
-export const deleteBill=(id)=>async(dispatch)=>{
+export const deleteBill=(id,history)=>async(dispatch)=>{
     await apis.delete(`/${id}`)
     dispatch({type:DELTE_BILL,payload:id})
-    history.push('/')
+    history.push("/")
 }
 
 export const editBill=(id,details)=>async(dispatch)=>{
     const {data}= await apis.put(`/${id}`,details)
+    console.log(data)
     dispatch({type:EDIT_BILL,payload:data})
 }
 

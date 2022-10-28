@@ -50,7 +50,7 @@
   justify-content: flex-start;
   flex-direction: column;
 }
-.modal-box form input {
+.modal-box form input , .modal-box form select{
   width: 100%;
   background: rgb(241, 239, 239);
   padding: 8px 15px;

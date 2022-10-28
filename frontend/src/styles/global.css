@@ -35,18 +35,21 @@ a{
 }
 .msg{
 min-width: 200px;
+min-height: 70px;
 padding: 10px;
 border-radius: 2px;
 font-size: 18px;
 font-weight: bold;
 z-index: 100;
-background-color: #fff;
-color: rgb(103, 248, 103);
-border-bottom: 2px solid rgb(103, 248, 103);
+background-color:rgb(103, 248, 103) ;
+color:#fff;
 position: fixed;
 top: 80px;
-left: -400px;
+right: -400px;
 transition: all 0.3s ease-in-out;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .msg p{
   font-size: 17px;
@@ -56,6 +59,12 @@ transition: all 0.3s ease-in-out;
 right: 30px;
 transition: all 0.3s ease-in-out;
 
+}
+.err{
+  background: rgb(239, 109, 109);
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
 }
 button{
   background-color: #169999;

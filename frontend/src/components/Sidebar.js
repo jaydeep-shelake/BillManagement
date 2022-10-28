@@ -18,17 +18,17 @@ const Sidebar = () => {
         </div>
         <p>Home</p>
       </div> </Link>
-     <Link to="/bills/allBills"> <div className={`link ${pathname==="/bills/allBills"&&'active'}`}>
+     <Link to="/allBills"> <div className={`link ${pathname==="/bills/allBills"&&'active'}`}>
         <div className="icon">
         <BsFillFileEarmarkCheckFill/>
         </div>
         <p>History</p>
       </div></Link>
-      <Link to="/cas"> <div className={`link ${pathname==="/cas"&&'active'}`}>
+      <Link to="/analytics"> <div className={`link ${pathname==="/cas"&&'active'}`}>
         <div className="icon">
         <MdInsertChart/>
         </div>
-        <p>Cas</p>
+        <p>Overview</p>
       </div></Link>
       <div className="link">
         <div className="icon">

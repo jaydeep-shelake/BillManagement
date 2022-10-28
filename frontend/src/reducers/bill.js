@@ -1,4 +1,4 @@
-import { ADD_BILL, EDIT_BILL, GET_BILL, GET_BILLS,MSG } from "../actions/types";
+import { ADD_BILL, DELTE_BILL, EDIT_BILL, GET_BILL, GET_BILLS,MSG } from "../actions/types";
 
 export const BillReducer=(state=[],action)=>{
     console.log(action.payload)
@@ -8,7 +8,17 @@ export const BillReducer=(state=[],action)=>{
         case ADD_BILL:
             return [...state,action.payload]
         case EDIT_BILL:
-            return[...state,action.payload]       
+            const editedBill = state.find((item)=>item._id===action.payload._id)
+            if(editedBill){
+                return state.map(x=>x._id===editedBill._id?action.payload:x)
+            }
+            else{
+
+                return[...state,action.payload]  
+            }
+        case DELTE_BILL:
+           const newState=  state.filter(item=>item._id!==action.payload)
+            return  newState  
         default:
             return state
     }

@@ -1,16 +1,17 @@
 import React,{useState}from 'react'
 import {useDispatch} from 'react-redux'
 import { AddBill } from '../actions'
+import "../styles/modal.css"
 const UserModal = ({setShowModal}) => {
-  const [billDate,setBillDate]=useState('')
-  const [paidDate,setPaidDate]=useState('')
-  const [unitConsumed,setUnitConsumed]=useState('')
-  const [totalAmount,setTotalAmount]=useState('')
+  const [description,setDes]=useState("")
+  const [amount,setAmount]=useState("")
+  const [date,setDate]=useState("")
+  const [category,setCatogery]=useState("FoodNDining")
 
   const dispatch =useDispatch()
   const handleOnSumbit=async(e)=>{
      e.preventDefault()
-     dispatch(AddBill({billDate,paidDate,unitConsumed,totalAmount}))
+     dispatch(AddBill({description,amount,date,category}))
      setShowModal(false)
     
   }
@@ -19,10 +20,16 @@ const UserModal = ({setShowModal}) => {
         <div className="modal-box" onClick={(e)=>e.stopPropagation()}>
             <form onSubmit={handleOnSumbit}>
                 <h3>Add Bill</h3>
-                <input value={billDate} onChange={(e)=>setBillDate(e.target.value)} type="date" placeholder='Enter Bill date' />
-                <input value={paidDate} onChange={(e)=>setPaidDate(e.target.value)} type="date" placeholder='Enter Paid date' />
-                <input value={unitConsumed} onChange={(e)=>setUnitConsumed(e.target.value)} type="number" placeholder='Enter Unit consumed.' />
-                <input value={totalAmount} onChange={(e)=>setTotalAmount(e.target.value)} type="number" placeholder='Enter Total Amount' />
+                <input value={description} onChange={(e)=>setDes(e.target.value)} type="text" placeholder='description' />
+                <select name="category" id="category" onChange={(e)=>setCatogery(e.target.value)}>
+                    <option value="FoodNDining">FoodNDining</option>
+                    <option value="utility">Utility</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="education">Education</option>
+                    <option value="travel">Travel</option>
+                </select>
+                <input value={amount} onChange={(e)=>setAmount(e.target.value)} type="text" placeholder='Amount' />
+                <input value={date} onChange={(e)=>setDate(e.target.value)} type="date" placeholder='Date' />
                 <button type="submit">Submit</button>
             </form>
         </div>

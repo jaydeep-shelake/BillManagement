@@ -1,16 +1,20 @@
 import React,{useState} from 'react'
 import '../styles/header.css'
 import {FiSearch} from 'react-icons/fi'
-
+import { useDispatch } from 'react-redux'
+import { getAllBils } from '../actions'
 import { useLocation } from 'react-router-dom'
 const Header = () => {
   const [search,setSearch]=useState('')
-  const  location = useLocation()
-  const pathname = location.pathname
- 
+  // const  location = useLocation()
+  // const pathname = location.pathname
+ const dispatch=useDispatch()
 
   const handleSubmit=(e)=>{
     e.preventDefault()
+    const location= search.charAt(0).toUpperCase()+search.slice(1)
+    console.log(location)
+    dispatch(getAllBils(location))
     
   }
   return (

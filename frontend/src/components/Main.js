@@ -1,93 +1,96 @@
 import React ,{ useState}from 'react'
 import addbillimage from '../assets/images/Add files-rafiki.png'
 import viewbillimage from '../assets/images/Add tasks-pana.png'
-import managebills from '../assets/images/Credit card-cuate.png'
 import PlateCard from './PlateCard'
-import Modal from './Modal'
+import {GrAddCircle} from 'react-icons/gr'
 import UserOrderCard from './UserOrderCard'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllBils } from '../actions'
+import { useEffect,useMemo } from 'react'
+import { useSelector } from 'react-redux'
+import UserModal from './UserModal'
 const Main = () => {
-  const [activeIndex,setActiveIndex]=useState(0)
-  const [thaliDetails,setDetails]=useState({name:"Veg Thali", price:130})
-  const [showModal,setShowModal]=useState(false)
-  const [count,setCount]=useState(2)
-  const dispatch =useDispatch()
-  const next=()=>{
-    setCount(count+2)
- 
-     
-   }
-   
- 
- const prev=()=>{
-   if(count>2){
-     setCount(count-2)
- 
-   }
- }
-  useEffect(()=>{
-   dispatch(getAllBils(count))
-  },[dispatch,count])
   
-  const allBills = useSelector(state=>state.bills)
+  const [category,setCatogery]=useState("all")
+  
+  const [showModal,setShowModal]=useState(false)
+  const[allBills,setBills]=useState([])
 
-  const thalies =[
-    {
-      text:'Add Bill',
-      imgUrl:addbillimage,
-    },
-    {
-      text:'View Bills',
-      imgUrl:viewbillimage,
-    },
-    {
-      text:'Manage',
-      imgUrl:managebills,
-    },
-  ]
+  const bills= useSelector(state=>state.bills)
+  const billAmount= useMemo(()=>bills.reduce((total,item)=>total+parseInt(item.amount),0))
  
+
+ useEffect(()=>{
+setBills(bills)
+ },[bills])
+ 
+ useEffect(()=>{
+ if(category==="all"){
+  setBills(bills)
+ }else{
+   setBills(bills.filter((item)=>item.category===category))
+ }
+ },[category])
+  
+
+  
   return (
     <>
     <div className='main'>
+      <div className="main_uppertitle">
       <h2> Dashboard</h2>
+      <div className="select_container">
+      <select name="category" id="category" onChange={(e)=>setCatogery(e.target.value)}>
+                    <option value="all">All</option>
+                    <option value="FoodNDining">FoodNDining</option>
+                    <option value="utility">Utility</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="education">Education</option>
+                    <option value="travel">Travel</option>
+        </select>
+        </div>
+      </div>
       <div className="plates">
-        {
-          thalies.map((thali,i)=>(
-            <PlateCard text={thali.text} img={thali.imgUrl} i={i} active={i===activeIndex?true:false} setActiveIndex={setActiveIndex} setDetails={setDetails}/>
-          ))
-        }
+        
+            <PlateCard text="Total Bill: " bill={billAmount} img={addbillimage} />
+            <PlateCard text="Budget: " bill={50000} img={viewbillimage} />
+            
+            <div   className={`plate-card`} >
+            <div className="add-uesr">
+      <h3>Add new Bill</h3>
+         <div className="add-box" onClick={()=>setShowModal(true)}>
+          <GrAddCircle/> Add Bill
+         </div>
+      </div>
+            </div>
         
       </div>
       <div className="users-orders">
         <div className="status">
-          <p>Name</p>
-          <p>Bill Date</p>
-          <p>Paid Date</p>
-          <p>Unit</p>
+          <p>Description</p>
+          <p>Category</p>
           <p>Amount</p>
+          <p>Date</p>
+          
         </div>
         {
          allBills.map((bill)=>(
-           <UserOrderCard 
-           key={bill?._id}
-           id={bill?._id}
-           billDate={bill?.billDate}
-           paidDate={bill?.paidDate}
-           unitConsumed={bill?.unitConsumed}
-           totalAmount={bill.totalAmount}
-           />
+           bill._id&&(<UserOrderCard 
+            description={bill.description}
+              category={bill.category}
+              amount={bill.amount}
+              date={bill.date}
+              id={bill._id}
+              key={bill._id}
+              paid={bill.paid}
+           />)
          ))
         }
           
 
          
       </div>
-      <button onClick={prev}>Prev</button>
-<button onClick={next} style={{marginLeft:'10px'}}>Next</button>
     </div>
-    {/* <Modal setShowModal={setShowModal}/> */}
+    {showModal&&<UserModal setShowModal={setShowModal}/>}
+    
     </>
   )
 }

@@ -4,11 +4,29 @@
   align-items: center;
   justify-content: center;
 }
+
 .main {
   width: 60%;
   background: rgba(233, 232, 232, 0.336);
   height: calc(100vh - 80px);
   padding: 30px;
+}
+.main_uppertitle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main_uppertitle .select_container{
+background:#63b7b7;
+ padding: 10px;
+border-radius: 4px;
+}
+.main_uppertitle .select_container select{
+  border: none;
+  padding: 5px;
+border-radius: 4px;
+
 }
 .right-sidebar {
   width: 25%;
@@ -19,7 +37,7 @@
 
 .plate-card {
   width: 250px;
-  height: auto;
+  height: 250px;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -61,7 +79,7 @@
   font-weight: 700;
 }
 .status p {
-  width: 80px;
+  
   text-align: center;
 }
 .users-orders {
@@ -86,6 +104,8 @@
   color: #000;
  
 }
+
+
 .user-order-card.active {
   background: #97d6d63d;
   cursor: pointer;
@@ -93,7 +113,15 @@
 .main table{
   width: 100%;
   margin-top:30px;
-  border-spacing: 0px;
+  cursor: pointer;
+ border-spacing: 0 10px;
+}
+.main table a{
+  color: #000;
+  
+}
+.main table button{
+  cursor: pointer;
 }
 .main table th ,.main table td{
   width: 100px;
@@ -104,8 +132,12 @@
   text-align: start;
   padding: 10px;
 }
-table tr:nth-child(even){
+table tr.false{
+background: rgb(207, 206, 206);
+}
+table tr.active{
   background: #b9efef;
+  margin: 10px 0;
 }
 .total-area{
   width: 100%;
