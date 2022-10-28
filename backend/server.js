@@ -16,10 +16,10 @@ mongoose.connect(uri,
         console.log('connected...')
     });
 
-app.use(cors())
+// app.use(cors())
 
 //place all routes here
-app.use('/',billRouter)
+app.use('/api',billRouter)
 
 //production
 const __filename = fileURLToPath(import.meta.url);
