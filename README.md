@@ -1,21 +1,19 @@
-# Food Delivery
+# Bill Management
 
 <div align="center">
   <img width="200px" src="./frontend/src/assets/images/Add files-rafiki.png"/>
 </div>
 <br>
 
-> Eleric bill app made using MERN stack (Exela Hiring Challenge ) <br>
-> Followed MVC architecture and microservices for serever side
+> Bill management app made using MERN stack <br>
 
 ## ⚙️ Detailed Functionality
 
-- User can add the electric bills
-- Users can update quantity bill
-- User can delete the bill
-- User can paginate
-- User can view there old bills
-- User can add , edit or delete the bill
+- The user must be able to manually add, edit and remove bills. (data is stored in MongoDB database using NodeJS) ✅
+- The user must be able to filter bills by category. (category filter dropdown) ✅
+- Draw a time-series chart of the monthly billing cycle. ✅
+- The user can see the total amount of bills and the total amount yet to be paid ✅
+- If the total amount exceeds the total budget user will not be able to add a new bill ✅
 
 ## 🚀 Tech and Tools Used
 
@@ -37,6 +35,10 @@
 ## Add or Edit Form
 
 <img src="./add.png" width='800' height='auto'>
+
+## Chart
+
+<img src="./graph.png" width='800' height='auto'>
 
 ### LINK :
 
